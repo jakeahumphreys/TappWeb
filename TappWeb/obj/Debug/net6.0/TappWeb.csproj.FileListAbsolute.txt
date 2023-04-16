@@ -1,0 +1,8 @@
+C:\Users\jakeh\RiderProjects\TappWeb\TappWeb\obj\Debug\net6.0\TappWeb.csproj.AssemblyReference.cache
+C:\Users\jakeh\RiderProjects\TappWeb\TappWeb\obj\Debug\net6.0\TappWeb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jakeh\RiderProjects\TappWeb\TappWeb\obj\Debug\net6.0\TappWeb.AssemblyInfoInputs.cache
+C:\Users\jakeh\RiderProjects\TappWeb\TappWeb\obj\Debug\net6.0\TappWeb.AssemblyInfo.cs
+C:\Users\jakeh\RiderProjects\TappWeb\TappWeb\obj\Debug\net6.0\TappWeb.csproj.CoreCompileInputs.cache
+C:\Users\jakeh\RiderProjects\TappWeb\TappWeb\obj\Debug\net6.0\TappWeb.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jakeh\RiderProjects\TappWeb\TappWeb\obj\Debug\net6.0\TappWeb.RazorAssemblyInfo.cache
+C:\Users\jakeh\RiderProjects\TappWeb\TappWeb\obj\Debug\net6.0\TappWeb.RazorAssemblyInfo.cs
