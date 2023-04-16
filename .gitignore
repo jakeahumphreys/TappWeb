@@ -2,3 +2,4 @@
 TappWeb/bin
 TappWeb/obj
 TappWeb.sln.DotSettings
+TappWeb/appsettings.Development.json
