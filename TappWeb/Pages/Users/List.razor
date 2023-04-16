@@ -1,0 +1,8 @@
+﻿@page "/Users/List"
+<h3>List</h3>
+
+<h3>@_users.Count</h3>
+@foreach (var user in _users)
+{
+    <h4>@user.Firstname , @user.Lastname</h4>
+}
