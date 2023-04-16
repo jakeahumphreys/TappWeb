@@ -3,3 +3,5 @@ TappWeb/bin
 TappWeb/obj
 TappWeb.sln.DotSettings
 TappWeb/appsettings.Development.json
+TappWeb.Tests/bin
+TappWeb.Tests/obj
