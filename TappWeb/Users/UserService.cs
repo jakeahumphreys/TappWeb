@@ -6,6 +6,7 @@ public interface IUserService
 {
     public void AddUser(UserRecord user);
     public List<UserRecord> GetAllUsers();
+    public UserRecord GetByReference(Guid reference);
 }
 
 public sealed class UserService : IUserService
@@ -29,7 +30,12 @@ public sealed class UserService : IUserService
     {
         return _userRepository.GetAll();
     }
-    
+
+    public UserRecord GetByReference(Guid reference)
+    {
+        return _userRepository.GetByReference(reference);
+    }
+
     public void AddUser(UserRecord user)
     {
         _userRepository.Add(user);
