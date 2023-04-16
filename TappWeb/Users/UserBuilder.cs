@@ -4,6 +4,7 @@ namespace TappWeb.Users;
 
 public interface IUserBuilder
 {
+    public UserBuilder WithReference(Guid reference);
     public UserBuilder WithUsername(string username);
     public UserBuilder WithFirstname(string firstname);
     public UserBuilder WithLastname(string lastname);
@@ -21,7 +22,12 @@ public class UserBuilder : IUserBuilder
     public UserBuilder()
     {
         _userRecord = new UserRecord();
-        _userRecord.Id = Guid.NewGuid();
+    }
+
+    public UserBuilder WithReference(Guid reference)
+    {
+        _userRecord.Reference = reference;
+        return this;
     }
 
     public UserBuilder WithUsername(string username)
