@@ -33,6 +33,16 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
+          
+  test:
+    runs-on: windows-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run Tests
+        run: dotnet test --configuration Release
 
   deploy:
     runs-on: windows-latest
