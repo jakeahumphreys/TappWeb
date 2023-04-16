@@ -16,14 +16,6 @@ public sealed class UserService : IUserService
     public UserService(IUserRepository userRepository)
     {
         _userRepository = userRepository;
-        AddUser(new UserBuilder()
-            .WithUsername("TestMan")
-            .WithFirstname("Test")
-            .WithLastname("Man")
-            .WithEmail("testman@test.com")
-            .WithPassword("test123")
-            .WithActiveStatus(true)
-            .CreateUser());
     }
 
     public List<UserRecord> GetAllUsers()

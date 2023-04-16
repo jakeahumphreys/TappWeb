@@ -1,4 +1,6 @@
-﻿using TappWeb.Users.Types;
+﻿using System.Data;
+using TappWeb.Users.Types;
+using ISession = NHibernate.ISession;
 
 namespace TappWeb.Users;
 
@@ -11,25 +13,38 @@ public interface IUserRepository
 
 public sealed class UserRepository : IUserRepository
 {
-    private List<UserRecord> _users;
+    private readonly ISession _session;
 
-    public UserRepository()
+    public UserRepository(ISession session)
     {
-       _users = new List<UserRecord>();
+        _session = session;
     }
 
     public List<UserRecord> GetAll()
     {
-        return _users;
+        var users = new List<UserRecord>();
+        using (var transaction = _session.BeginTransaction(IsolationLevel.ReadCommitted))
+        {
+            users = _session.QueryOver<UserRecord>().List().ToList();
+        }
+
+        return users;
     }
 
     public UserRecord GetByReference(Guid reference)
     {
-        return _users.SingleOrDefault(x => x.Reference == reference);
+        using (var transaction = _session.BeginTransaction(IsolationLevel.ReadCommitted))
+        {
+            return _session.Query<UserRecord>().SingleOrDefault(x => x.Reference == reference);
+        }
     }
 
     public void Add(UserRecord user)
     {
-        _users.Add(user);
+        using (var transaction = _session.BeginTransaction(IsolationLevel.ReadCommitted))
+        {
+            _session.Save(user);
+            transaction.Commit();
+        }
     }
 }
