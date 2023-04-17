@@ -1,6 +1,6 @@
 ﻿using TappWeb.Users.Types;
 
-namespace TappWeb.Users;
+namespace TappWeb.Users.Helpers;
 
 public interface IUserBuilder
 {
@@ -11,7 +11,6 @@ public interface IUserBuilder
     public UserBuilder WithEmail(string email);
     public UserBuilder WithPassword(string password);
     public UserBuilder WithActiveStatus(bool isActive);
-    public UserBuilder WithPermissions(List<Permission> permissions);
     public UserRecord CreateUser();
 }
 
@@ -65,14 +64,7 @@ public class UserBuilder : IUserBuilder
         _userRecord.IsActive = isActive;
         return this;
     }
-
-    public UserBuilder WithPermissions(List<Permission> permissions)
-    {
-        _userRecord.Permissions = permissions;
-        return this;
-    }
-
-
+    
     public UserRecord CreateUser()
     {
         return _userRecord;

@@ -1,13 +1,14 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;using NHibernate;
-using TappWeb;
-using TappWeb.Users;using ISession = NHibernate.ISession;
+using TappWeb.Data;
+using TappWeb.Users;
+using TappWeb.Users.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+
+builder.Services.AddSingleton<TappDbContext>();
 
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<IUserService, UserService>();

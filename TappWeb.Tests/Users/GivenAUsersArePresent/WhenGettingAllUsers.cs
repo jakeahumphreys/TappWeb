@@ -1,5 +1,4 @@
-﻿using Moq;
-using TappWeb.Users;
+﻿using TappWeb.Users;
 using TappWeb.Users.Types;
 
 namespace TappWeb.Tests.Users.GivenAUsersArePresent;

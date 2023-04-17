@@ -1,4 +1,5 @@
-﻿using TappWeb.Users.Types;
+﻿using TappWeb.Users.Data;
+using TappWeb.Users.Types;
 
 namespace TappWeb.Users;
 
