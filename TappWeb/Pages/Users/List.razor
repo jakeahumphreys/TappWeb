@@ -1,8 +1,53 @@
 ﻿@page "/Users/List"
-<h3>List</h3>
 
-<h3>@_users.Count</h3>
-@foreach (var user in _users)
-{
-    <h4>@user.Firstname , @user.Lastname</h4>
-}
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header">
+            Users (@_users.Count)
+            <button type="button" class="btn btn-success mx-2">Add</button>
+        </div>
+        <div class="card-body">
+             <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Reference</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var user in _users)
+                {
+                    <tr>
+                        <td>@(_users.IndexOf(user) + 1)</td>
+                        <td>@user.Reference</td>
+                        <td>@user.Username</td>
+                        <td>@user.Email</td>
+                        <td>@user.Firstname</td>
+                        <td>@user.Lastname</td>
+                        <td>
+                            @if (user.IsActive)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactive</span>
+                            }
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
