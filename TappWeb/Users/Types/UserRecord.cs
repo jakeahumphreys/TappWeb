@@ -35,6 +35,8 @@ public class UserRecordMap : ClassMap<UserRecord>
             .Cascade.AllDeleteOrphan() // Cascade delete-orphan for associated Permission objects
             .Inverse() // Use inverse mapping to optimize performance
             .LazyLoad() // Enable lazy loading for the Permissions collection
-            .KeyColumn("UserId"); // Set the foreign key column to "UserId" in the Permission table
+            .KeyColumn("UserId")
+            .Access.CamelCaseField(Prefix.Underscore); // Set the foreign key column to "UserId" in the Permission table
+        
     }
 }
