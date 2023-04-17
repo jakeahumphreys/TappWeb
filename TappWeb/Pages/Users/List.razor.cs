@@ -10,9 +10,11 @@ public partial class List
     
     private List<UserRecord> _users { get;set; }
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        _users = _userService.GetAllUsers();
-        return base.OnInitializedAsync();
+        _users = new List<UserRecord>();
+        
+        var users = await _userService.GetAllUsers();
+        _users = users;
     }
 }

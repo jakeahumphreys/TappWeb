@@ -10,10 +10,10 @@ public sealed class WhenGettingASingleUser
     private UserRecord _result;
 
     [OneTimeSetUp]
-    public void Setup()
+    public async Task Setup()
     {
         var subject = new UserService(UserTestHelper.GetTestRepository());
-        _result = subject.GetByReference(Guid.Parse("5d9ce4f8-9d57-43ca-8d81-6d518617f7dc"));
+        _result = await subject.GetByReference(Guid.Parse("5d9ce4f8-9d57-43ca-8d81-6d518617f7dc"));
     }
     
     [Test]

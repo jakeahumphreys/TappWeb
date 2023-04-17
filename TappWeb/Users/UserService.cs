@@ -5,9 +5,9 @@ namespace TappWeb.Users;
 
 public interface IUserService
 {
-    public void AddUser(UserRecord user);
-    public List<UserRecord> GetAllUsers();
-    public UserRecord GetByReference(Guid reference);
+    public Task AddUser(UserRecord user);
+    public Task<List<UserRecord>> GetAllUsers();
+    public Task<UserRecord> GetByReference(Guid reference);
 }
 
 public sealed class UserService : IUserService
@@ -19,18 +19,18 @@ public sealed class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public List<UserRecord> GetAllUsers()
+    public async Task<List<UserRecord>> GetAllUsers()
     {
-        return _userRepository.GetAll();
+        return await _userRepository.GetAll();
     }
 
-    public UserRecord GetByReference(Guid reference)
+    public async Task<UserRecord> GetByReference(Guid reference)
     {
-        return _userRepository.GetByReference(reference);
+        return await _userRepository.GetByReference(reference);
     }
 
-    public void AddUser(UserRecord user)
+    public async Task AddUser(UserRecord user)
     {
-        _userRepository.Add(user);
+        await _userRepository.Add(user);
     }
 }

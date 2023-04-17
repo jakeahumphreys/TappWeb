@@ -21,13 +21,13 @@ public static class UserTestHelper
         
         var userRepository = new Mock<IUserRepository>();
         userRepository.Setup(x => x.GetAll())
-            .Returns(new List<UserRecord>(1)
+            .ReturnsAsync(new List<UserRecord>(1)
             {
                 testUser
             });
 
         userRepository.Setup(x => x.GetByReference(It.Is<Guid>(y => y == Guid.Parse("5d9ce4f8-9d57-43ca-8d81-6d518617f7dc"))))
-            .Returns(testUser);
+            .ReturnsAsync(testUser);
 
         return userRepository.Object;
     }
