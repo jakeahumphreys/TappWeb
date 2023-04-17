@@ -10,10 +10,10 @@ public sealed class WhenGettingAllUsers
     private List<UserRecord> _result;
 
     [OneTimeSetUp]
-    public void Setup()
+    public async Task Setup()
     {
         var subject = new UserService(UserTestHelper.GetTestRepository());
-        _result = subject.GetAllUsers();
+        _result = await subject.GetAllUsers();
     }
     
     [Test]
