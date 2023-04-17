@@ -26,13 +26,12 @@ public sealed class UserRepository : IUserRepository
 
     public UserRecord GetByReference(Guid reference)
     {
-        throw new NotImplementedException();
-
+        return _tappDb.Users.SingleOrDefault(x => x.Reference == reference);
     }
 
     public void Add(UserRecord user)
     {
-        throw new NotImplementedException();
-
+        _tappDb.Users.Add(user);
+        _tappDb.SaveChanges();
     }
 }
