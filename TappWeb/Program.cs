@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;using NHibernate;
 using TappWeb;
-using TappWeb.Users;using ISession = NHibernate.ISession;
+using TappWeb.Users;
+using TappWeb.Users.Data;
+using ISession = NHibernate.ISession;
 
 var builder = WebApplication.CreateBuilder(args);
 

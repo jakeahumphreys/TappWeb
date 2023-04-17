@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Interfaces;
-using Moq;
-using TappWeb.Users;
+﻿using Moq;
+using TappWeb.Users.Data;
+using TappWeb.Users.Helpers;
 using TappWeb.Users.Types;
 
 namespace TappWeb.Tests.Users;

@@ -1,9 +1,6 @@
-﻿using System.Data;
-using NHibernate;
-using TappWeb.Users.Types;
-using ISession = NHibernate.ISession;
+﻿using TappWeb.Users.Types;
 
-namespace TappWeb.Users;
+namespace TappWeb.Users.Data;
 
 public interface IUserRepository
 {
