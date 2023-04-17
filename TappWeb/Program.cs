@@ -9,9 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-var sessionFactory = DatabaseHandler.CreateSessionFactoryForPostgres(builder.Configuration.GetConnectionString("postgres"));
-
-builder.Services.AddSingleton(sessionFactory.OpenSession());
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<IUserService, UserService>();
 
