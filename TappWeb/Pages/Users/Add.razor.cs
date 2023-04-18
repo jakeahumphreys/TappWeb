@@ -7,19 +7,20 @@ namespace TappWeb.Pages.Users;
 
 public partial class Add
 {
-    [Inject] protected IUserService _userService { get; set; }
+    [Inject] protected IUserService? UserService { get; set; }
+    [Inject] protected NavigationManager? NavigationManager { get; set; }
     
-    public List<String> Errors { get; set; }
+    public List<String>? Errors { get; set; }
 
-    public AddUserModel AddUserModel = new AddUserModel();
-    private bool success;
+    public readonly AddUserModel AddUserModel = new AddUserModel();
+    private bool _success;
     
     protected override void OnInitialized()
     {
         Errors = new List<string>();
     }
 
-    public void OnValidSubmit()
+    public async void OnValidSubmit()
     {
         var user = new UserBuilder()
             .WithReference(Guid.NewGuid())
@@ -31,9 +32,9 @@ public partial class Add
             .WithActiveStatus(AddUserModel.IsActive)
             .CreateUser();
 
-        _userService.AddUser(user);
-        success = true;
-        StateHasChanged();
+        await UserService.AddUser(user);
+        _success = true;
+        NavigationManager.NavigateTo("/users/list");
     }
 }
 
