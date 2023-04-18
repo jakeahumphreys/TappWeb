@@ -1,6 +1,5 @@
 ﻿using TappWeb.Data.Users.Types;
 using TappWeb.Services.Users;
-using TappWeb.Users;
 
 namespace TappWeb.Tests.Users.GivenAUsersArePresent;
 

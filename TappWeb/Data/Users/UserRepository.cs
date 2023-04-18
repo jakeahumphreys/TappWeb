@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TappWeb.Data;
 using TappWeb.Data.Users.Types;
 
-namespace TappWeb.Users.Data;
+namespace TappWeb.Data.Users;
 
 public interface IUserRepository
 {

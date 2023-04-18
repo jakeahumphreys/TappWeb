@@ -1,8 +1,7 @@
 using MudBlazor.Services;
 using TappWeb.Data;
+using TappWeb.Data.Users;
 using TappWeb.Services.Users;
-using TappWeb.Users;
-using TappWeb.Users.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

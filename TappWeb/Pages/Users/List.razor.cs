@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using TappWeb.Data.Users.Types;
 using TappWeb.Services.Users;
-using TappWeb.Users;
 
 namespace TappWeb.Pages.Users;
 

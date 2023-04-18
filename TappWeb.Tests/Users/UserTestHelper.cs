@@ -1,7 +1,7 @@
 ﻿using Moq;
 using TappWeb.Common.Helpers;
+using TappWeb.Data.Users;
 using TappWeb.Data.Users.Types;
-using TappWeb.Users.Data;
 
 namespace TappWeb.Tests.Users;
 
