@@ -9,7 +9,8 @@ public interface IUserBuilder
     public UserBuilder WithFirstname(string firstname);
     public UserBuilder WithLastname(string lastname);
     public UserBuilder WithEmail(string email);
-    public UserBuilder WithPasswordKey(byte[] passwordKey);
+    public UserBuilder WithPasswordSalt(byte[] passwordSalt);
+    public UserBuilder WithPasswordHash(byte[] passwordHash);
     public UserBuilder WithActiveStatus(bool isActive);
     public UserRecord CreateUser();
 }
@@ -53,9 +54,15 @@ public class UserBuilder : IUserBuilder
         return this;
     }
 
-    public UserBuilder WithPasswordKey(byte[] passwordKey)
+    public UserBuilder WithPasswordSalt(byte[] passwordSalt)
     {
-        _userRecord.PasswordKey = passwordKey;
+        _userRecord.PasswordSalt = passwordSalt;
+        return this;
+    }
+
+    public UserBuilder WithPasswordHash(byte[] passwordHash)
+    {
+        _userRecord.PasswordHash = passwordHash;
         return this;
     }
 

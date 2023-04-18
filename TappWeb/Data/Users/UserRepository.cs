@@ -6,6 +6,7 @@ namespace TappWeb.Data.Users;
 public interface IUserRepository
 {
     public Task<List<UserRecord>> GetAll();
+    public Task<UserRecord> GetByUsername(string username);
     public Task<UserRecord> GetByReference(Guid reference);
     public Task Add(UserRecord user);
     public Task Remove(UserRecord user);
@@ -23,6 +24,11 @@ public sealed class UserRepository : IUserRepository
     public async Task<List<UserRecord>> GetAll()
     {
         return await _tappDb.Users.ToListAsync();
+    }
+
+    public async Task<UserRecord> GetByUsername(string username)
+    {
+        return await _tappDb.Users.SingleOrDefaultAsync(x => x.Username == username);
     }
 
     public async Task<UserRecord> GetByReference(Guid reference)

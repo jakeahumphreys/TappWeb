@@ -7,6 +7,7 @@ public interface IUserService
 {
     public Task AddUser(UserRecord user);
     public Task<List<UserRecord>> GetAllUsers();
+    public Task<UserRecord> GetByUsername(string username);
     public Task<UserRecord> GetByReference(Guid reference);
     public Task RemoveUser(UserRecord user);
 }
@@ -23,6 +24,11 @@ public sealed class UserService : IUserService
     public async Task<List<UserRecord>> GetAllUsers()
     {
         return await _userRepository.GetAll();
+    }
+
+    public async Task<UserRecord> GetByUsername(string username)
+    {
+        return await _userRepository.GetByUsername(username);
     }
 
     public async Task<UserRecord> GetByReference(Guid reference)

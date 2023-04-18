@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Components;
 using TappWeb.Common.Helpers;
+using TappWeb.Common.Security;
 using TappWeb.Services.Users;
 
 namespace TappWeb.Pages.Users;
@@ -23,39 +24,21 @@ public partial class Add
 
     public async void OnValidSubmit()
     {
-        var passwordSalt = GenerateSalt();
+        var passwordSalt = PasswordHelper.GenerateSalt();
         var user = new UserBuilder()
             .WithReference(Guid.NewGuid())
             .WithUsername(AddUserModel.Username)
             .WithFirstname(AddUserModel.Firstname)
             .WithLastname(AddUserModel.Lastname)
             .WithEmail(AddUserModel.Email)
-            .WithPasswordKey(passwordSalt)
+            .WithPasswordSalt(passwordSalt)
+            .WithPasswordHash(PasswordHelper.HashPassword(AddUserModel.Password, passwordSalt))
             .WithActiveStatus(AddUserModel.IsActive)
             .CreateUser();
 
         await UserService.AddUser(user);
         _success = true;
         NavigationManager.NavigateTo("/users/list");
-    }
-    
-    public byte[] GenerateSalt()
-    {
-        var salt = new byte[16];
-        using (var rng = RandomNumberGenerator.Create())
-        {
-            rng.GetBytes(salt);
-        }
-
-        return salt;
-    }
-
-    public byte[] HashPassword(string password, byte[] salt)
-    {
-        using (var pbdkf2 = new Rfc2898DeriveBytes(password, salt, 10000))
-        {
-            return pbdkf2.GetBytes(32);
-        }
     }
 }
 
