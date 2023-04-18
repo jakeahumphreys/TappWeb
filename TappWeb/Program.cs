@@ -1,5 +1,6 @@
 using MudBlazor.Services;
 using TappWeb.Data;
+using TappWeb.Services.Users;
 using TappWeb.Users;
 using TappWeb.Users.Data;
 

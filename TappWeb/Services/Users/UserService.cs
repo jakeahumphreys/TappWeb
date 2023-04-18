@@ -1,7 +1,7 @@
-﻿using TappWeb.Users.Data;
-using TappWeb.Users.Types;
+﻿using TappWeb.Data.Users.Types;
+using TappWeb.Users.Data;
 
-namespace TappWeb.Users;
+namespace TappWeb.Services.Users;
 
 public interface IUserService
 {

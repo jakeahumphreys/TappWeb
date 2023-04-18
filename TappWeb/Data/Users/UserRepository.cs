@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TappWeb.Data;
-using TappWeb.Users.Types;
+using TappWeb.Data.Users.Types;
 
 namespace TappWeb.Users.Data;
 

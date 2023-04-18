@@ -1,4 +1,4 @@
-﻿namespace TappWeb.Users.Types;
+﻿namespace TappWeb.Data.Users.Types;
 
 public class UserRecord
 {
