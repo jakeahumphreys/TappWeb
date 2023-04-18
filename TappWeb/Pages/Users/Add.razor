@@ -1,1 +1,49 @@
 @page "/Users/Add"
+<EditForm Model="@AddUserModel" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <MudGrid>
+        <MudItem xs="12" sm="7">
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField Label="Username"
+                                  @bind-Value="AddUserModel.Username" For="@(() => AddUserModel.Username)"/>
+                    <MudTextField Label="First Name" Class="mt-3"
+                                  @bind-Value="AddUserModel.Firstname" For="@(() => AddUserModel.Firstname)"/>
+                    <MudTextField Label="Last Name" Class="mt-3"
+                                  @bind-Value="AddUserModel.Lastname" For="@(() => AddUserModel.Lastname)"/>
+                    <MudTextField Label="Email" Class="mt-3"
+                                  @bind-Value="AddUserModel.Email" For="@(() => AddUserModel.Email)"/>
+                    <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
+                                  @bind-Value="AddUserModel.Password" For="@(() => AddUserModel.Password)" InputType="InputType.Password"/>
+                    <MudTextField Label="Password Confirm" HelperText="Repeat the password" Class="mt-3"
+                                  @bind-Value="AddUserModel.ConfirmPassword" For="@(() => AddUserModel.ConfirmPassword)" InputType="InputType.Password"/>
+                    <MudCheckBox Label="Active" Class="mt-3"
+                                  @bind-Checked="AddUserModel.IsActive" For="@(() => AddUserModel.IsActive)"/>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" sm="5">
+            <MudPaper Class="pa-4 mud-height-full">
+                <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
+                @if (success)
+                {
+                    <MudText Color="Color.Success">Success</MudText>
+                }
+                else
+                {
+                    <MudText Color="@Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                }
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12">
+            <MudText Typo="Typo.body2" Align="Align.Center">
+                Fill out the form correctly to see the success message.
+            </MudText>
+        </MudItem>
+    </MudGrid>
+</EditForm>
