@@ -1,13 +1,14 @@
-﻿using TappWeb.Users.Data;
-using TappWeb.Users.Types;
+﻿using TappWeb.Data.Users;
+using TappWeb.Data.Users.Types;
 
-namespace TappWeb.Users;
+namespace TappWeb.Services.Users;
 
 public interface IUserService
 {
     public Task AddUser(UserRecord user);
     public Task<List<UserRecord>> GetAllUsers();
     public Task<UserRecord> GetByReference(Guid reference);
+    public Task RemoveUser(UserRecord user);
 }
 
 public sealed class UserService : IUserService
@@ -32,5 +33,10 @@ public sealed class UserService : IUserService
     public async Task AddUser(UserRecord user)
     {
         await _userRepository.Add(user);
+    }
+
+    public async Task RemoveUser(UserRecord user)
+    {
+        await _userRepository.Remove(user);
     }
 }

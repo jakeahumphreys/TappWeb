@@ -1,12 +1,14 @@
+using MudBlazor.Services;
 using TappWeb.Data;
-using TappWeb.Users;
-using TappWeb.Users.Data;
+using TappWeb.Data.Users;
+using TappWeb.Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddMudServices();
 
 builder.Services.AddSingleton<TappDbContext>();
 

@@ -1,6 +1,6 @@
-﻿using TappWeb.Users.Types;
+﻿using TappWeb.Data.Users.Types;
 
-namespace TappWeb.Users.Helpers;
+namespace TappWeb.Common.Helpers;
 
 public interface IUserBuilder
 {

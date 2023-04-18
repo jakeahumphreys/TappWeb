@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TappWeb.Data;
-using TappWeb.Users.Types;
+using TappWeb.Data.Users.Types;
 
-namespace TappWeb.Users.Data;
+namespace TappWeb.Data.Users;
 
 public interface IUserRepository
 {
     public Task<List<UserRecord>> GetAll();
     public Task<UserRecord> GetByReference(Guid reference);
     public Task Add(UserRecord user);
+    public Task Remove(UserRecord user);
 }
 
 public sealed class UserRepository : IUserRepository
@@ -33,6 +33,12 @@ public sealed class UserRepository : IUserRepository
     public async Task Add(UserRecord user)
     {
         await _tappDb.Users.AddAsync(user);
+        await _tappDb.SaveChangesAsync();
+    }
+
+    public async Task Remove(UserRecord user)
+    {
+        _tappDb.Users.Remove(user);
         await _tappDb.SaveChangesAsync();
     }
 }
