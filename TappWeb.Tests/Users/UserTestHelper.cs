@@ -15,7 +15,6 @@ public static class UserTestHelper
             .WithFirstname("Test")
             .WithLastname("Man")
             .WithEmail("testman@test.com")
-            .WithPassword("test123")
             .WithActiveStatus(true)
             .CreateUser();
         

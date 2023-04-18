@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TappWeb.Data;
@@ -11,9 +12,11 @@ using TappWeb.Data;
 namespace TappWeb.Migrations
 {
     [DbContext(typeof(TappDbContext))]
-    partial class TappDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230418153024_ReAddPasswordKeyToUser")]
+    partial class ReAddPasswordKeyToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,6 +45,10 @@ namespace TappWeb.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Lastname")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
 
