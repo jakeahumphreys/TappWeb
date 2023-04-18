@@ -1,46 +1,47 @@
 ﻿@page "/Users/List"
+@attribute [Authorize(Roles = "Admin")]
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-2">
-    <MudCard Outlined="true">
-        <MudCardContent>
-            <MudText>Users (@_users.Count)</MudText>
-            <MudDivider class="mb-2"/>
-            <MudTable Items="_users" Loading="@_loading">
-                <HeaderContent>
-                    <MudTh>Reference</MudTh>
-                    <MudTh>Username</MudTh>
-                    <MudTh>Email</MudTh>
-                    <MudTh>Firstname</MudTh>
-                    <MudTh>Lastname</MudTh>
-                    <MudTh>Status</MudTh>
-                    <MudTh>Actions</MudTh>
-                </HeaderContent>
-                <RowTemplate>
-                    <MudTd DataLabel="Reference">@context.Reference</MudTd>
-                    <MudTd DataLabel="Username">@context.Username</MudTd>
-                    <MudTd DataLabel="Email">@context.Email</MudTd>
-                    <MudTd DataLabel="Firstname">@context.Firstname</MudTd>
-                    <MudTd DataLabel="Lastname">@context.Lastname</MudTd>
-                    <MudTd DataLabel="Status">
-                        @if (context.IsActive)
-                        {
-                            <MudChip Color="Color.Success">Active</MudChip>
-                        }
-                        else
-                        {
-                            <MudChip Color="Color.Error">Inactive</MudChip>
-                        }
-                    </MudTd>
-                    <MudTd>
-                        <MudButton Variant="Variant.Filled" Color="Color.Primary">Edit</MudButton>
-                        <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="() => DeleteUser(context)">Delete</MudButton>
-                    </MudTd>
-                </RowTemplate>
-            </MudTable>
-        </MudCardContent>
-     <MudCardActions>
-         <MudButton Variant="Variant.Filled" Color="Color.Tertiary">Add User</MudButton>
-     </MudCardActions>
-    </MudCard>
+<MudCard Outlined="true">
+            <MudCardContent>
+                <MudText>Users (@_users.Count)</MudText>
+                <MudDivider class="mb-2"/>
+                <MudTable Items="_users" Loading="@_loading">
+                    <HeaderContent>
+                        <MudTh>Reference</MudTh>
+                        <MudTh>Username</MudTh>
+                        <MudTh>Email</MudTh>
+                        <MudTh>Firstname</MudTh>
+                        <MudTh>Lastname</MudTh>
+                        <MudTh>Status</MudTh>
+                        <MudTh>Actions</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="user">
+                        <MudTd DataLabel="Reference">@user.Reference</MudTd>
+                        <MudTd DataLabel="Username">@user.Username</MudTd>
+                        <MudTd DataLabel="Email">@user.Email</MudTd>
+                        <MudTd DataLabel="Firstname">@user.Firstname</MudTd>
+                        <MudTd DataLabel="Lastname">@user.Lastname</MudTd>
+                        <MudTd DataLabel="Status">
+                            @if (user.IsActive)
+                            {
+                                <MudChip Color="Color.Success">Active</MudChip>
+                            }
+                            else
+                            {
+                                <MudChip Color="Color.Error">Inactive</MudChip>
+                            }
+                        </MudTd>
+                        <MudTd>
+                            <MudButton Variant="Variant.Filled" Color="Color.Primary">Edit</MudButton>
+                            <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="() => DeleteUser(user)">Delete</MudButton>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Filled" Color="Color.Tertiary">Add User</MudButton>
+            </MudCardActions>
+        </MudCard>
 </MudContainer>
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using TappWeb.Data.Users.Types;
 using TappWeb.Services.Users;
 
@@ -7,6 +8,7 @@ namespace TappWeb.Pages.Users;
 public partial class List
 {
     [Inject] protected IUserService _userService { get; set; }
+    [Inject] protected AuthenticationStateProvider _authenticationStateProvider { get; set; }
     
     private List<UserRecord> _users { get;set; }
     private bool _loading;
