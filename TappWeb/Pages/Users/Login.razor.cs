@@ -7,7 +7,13 @@ namespace TappWeb.Pages.Users;
 public partial class Login
 {
     [Inject] private IUserService _userService { get; set; }
+    
     public LoginModel LoginModel = new LoginModel();
+    public bool IsLoggedIn;
+
+    protected override void OnInitialized()
+    {
+    }
 
     public async void OnValidSubmit()
     {
@@ -15,7 +21,6 @@ public partial class Login
 
         if (PasswordHelper.VerifyPassword(LoginModel.Password, user.PasswordSalt, user.PasswordHash))
         {
-            Console.WriteLine("Logged in");
         }
     }
 }

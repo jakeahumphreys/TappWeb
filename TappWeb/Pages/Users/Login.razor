@@ -3,23 +3,26 @@
 <EditForm Model="@LoginModel" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <MudGrid>
-        <MudItem xs="12" sm="7">
-            <MudCard>
-                <MudCardContent>
-                    <MudTextField Label="Username"
-                                  @bind-Value="LoginModel.Username" For="@(() => LoginModel.Username)"/>
-                    <MudTextField Label="Password" Class="mt-3"
-                                  @bind-Value="LoginModel.Password" For="@(() => LoginModel.Password)" InputType="InputType.Password"/>
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
-                </MudCardActions>
-            </MudCard>
-        </MudItem>
-        <MudItem xs="12">
-            <MudText Typo="Typo.body2" Align="Align.Center">
-                Fill out the form correctly to see the success message.
-            </MudText>
-        </MudItem>
+        @if (!IsLoggedIn)
+        {
+            <MudItem xs="12" sm="7">
+                <MudCard>
+                    <MudCardContent>
+                        <MudTextField Label="Username"
+                                      @bind-Value="LoginModel.Username" For="@(() => LoginModel.Username)"/>
+                        <MudTextField Label="Password" Class="mt-3"
+                                      @bind-Value="LoginModel.Password" For="@(() => LoginModel.Password)" InputType="InputType.Password"/>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+            <MudItem xs="12">
+                <MudText Typo="Typo.body2" Align="Align.Center">
+                    Fill out the form correctly to see the success message.
+                </MudText>
+            </MudItem>
+        }
     </MudGrid>
 </EditForm>
