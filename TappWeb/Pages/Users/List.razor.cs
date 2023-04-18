@@ -18,4 +18,11 @@ public partial class List
         var users = await _userService.GetAllUsers();
         _users = users;
     }
+
+    public async void DeleteUser(UserRecord user)
+    {
+        await _userService.RemoveUser(user);
+        _users.Remove(user);
+        StateHasChanged();
+    }
 }
